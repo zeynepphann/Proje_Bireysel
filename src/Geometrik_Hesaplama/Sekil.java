@@ -23,6 +23,8 @@ public class Sekil {
         double cemberCevre=2*(pi*yariCap);
         System.out.println("Cember alan : "+ cemberCevre);
     }
+
+
     protected void dortgenAlanHesapla(){
 
         if (uzunKenar==kisaKenar){

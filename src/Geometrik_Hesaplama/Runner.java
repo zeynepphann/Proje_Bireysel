@@ -30,10 +30,28 @@ public class Runner {
             dktrgn.dortgenAlanHesapla();
 
 
-            Kare kare= new Kare(uzunKenar,kisaKenar);
+            /*
+             Kare kare= new Kare(uzunKenar,kisaKenar);
+             kare.dortgenCevreHesaplama();
+             kare.dortgenAlanHesapla();
+             YORUMA almaliyiz cunku sekil classinda if else yapip burda bir daha
+             obje uzerinden cagirirsak iki kez yazdiri yada
+             if else burada yapmaliyiz
 
-            kare.dortgenCevreHesaplama();
-            kare.dortgenAlanHesapla();
+             if (kisaKenar!=uzunKenar) {
+			  Dikdortgen dktrgn = new Dikdortgen(uzunKenar, kisaKenar);
+
+			  dktrgn.dortgenCevreHesaplama();
+			  dktrgn.dortgenAlanHesapla();
+		  }else {
+
+			  Kare kare = new Kare(uzunKenar, kisaKenar);
+
+			  kare.dortgenCevreHesaplama();
+			  kare.dortgenAlanHesapla();
+
+		  }
+             */
 
 
         }else{
