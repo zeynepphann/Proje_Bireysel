@@ -1,19 +1,21 @@
 package halukHoca;
 
 public class DepoYonetimi {
-    public static int id;
-    public static String urunIsmi;
-    public static String uretici;
-    public static int miktar;
-    public static String birim;
-    public static int raf; //0 geliyor
+    public  int id;
+    public  String urunIsmi;
+    public  String uretici;
+    public  int miktar=0;
+    public  String birim;
+    public  int raf; //0 geliyor
 
 
-    public DepoYonetimi(String urunAdi, String uretici, String birim, int id) {
-        this.urunIsmi = urunAdi;
+    public DepoYonetimi(int id,String urunIsmi, String uretici, String birim, int raf) {
+        this.id=Islemler.id;
+        this.urunIsmi = urunIsmi;
         this.uretici = uretici;
         this.birim = birim;
-        this.id=id;
+        this.raf=Islemler.raf;
+
 
     }
     @Override
@@ -32,13 +34,4 @@ public class DepoYonetimi {
 
     }
 
-    public DepoYonetimi(String urunIsmi, String uretici, int miktar, String birim, int raf, int id) {
-        this.urunIsmi = urunIsmi;
-        this.uretici = uretici;
-        this.miktar = miktar;
-        this.birim = birim;
-        this.raf = raf;
-        this.id=id;
-
-    }
 }
