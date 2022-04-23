@@ -49,8 +49,9 @@ public class Islemler {
                 break;
 
             default:
-                System.out.println("Hatali yaptiniz...");
+                System.out.println("Hatali bir giris yaptiniz...");
                 baslangic();
+                break;
         }
 
 
@@ -72,10 +73,9 @@ public class Islemler {
             if (each.id==cikisId){
                 System.out.println("Cikilacak urun miktarini giriniz : ");
                 int kacMiktar=scan.nextInt();
-                if (kacMiktar>0){
+                if (kacMiktar>0 && kacMiktar<each.miktar){
                     each.miktar-=kacMiktar;
-
-                }else System.out.println("gecerli bir miktar giriniz. ");
+                }else System.out.println(" Yeterli urun olmadigi icin cikis yapilamadi. ");
                 cikisDogruMu=true;
                 break;
             }
@@ -83,10 +83,10 @@ public class Islemler {
     }
 
     public static void urunuRafaKoy() {
-        boolean flag=true;
-        do {
+
+
             boolean rafaKoyduMu=false;
-            urunListele();
+           urunListele();
             System.out.println("Lutfen urun listesinden gecerli bir id giriniz: ");
             int girisId= scan.nextInt();
 
@@ -95,18 +95,19 @@ public class Islemler {
                 if (each.id==girisId){
                     System.out.println("Urunu koymak istediginiz rafi seciniz ");
                     each.raf= scan.nextInt();
-                    urunlerListesi.add(each);
                     rafaKoyduMu=true;
+                    urunListele();
                     break;
-                }else
-                    System.out.println("Urun bulunamadigi icin rafa kaldirilmadi.");
-                break;
+                  //}else if (each.id!=girisId){
+                  //  System.out.println("Urun bulunamadigi icin rafa kaldirilmadi.");
+                }
+                if (each.id!=girisId){
+                    System.out.println("Urun bulunamadigi icin rafa kaldirilmadi");
+                }
             }
 
-        }while (flag==true);
 
-
-
+            baslangic();
     }
 
 
