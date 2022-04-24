@@ -9,19 +9,20 @@ public class Islemler {
 
     static Scanner scan = new Scanner(System.in);
     public static int id=1000;
-    static HashMap <Integer,DepoYonetimi> urunlerMap = new HashMap<>();
+    static HashMap <Integer,List> urunlerMap = new HashMap<>();
     static List<DepoYonetimi> urunList=new ArrayList<>();
 
     public static int raf=0;
 
     public static void baslangic(){
-        System.out.println("Yapmak istediginiz islemi seciniz :\n"+
-                "Urun Tanimlama icin 1'e\n" +
-                "Urun Listeme icin 2'ye\n" +
-                "Urun Girisi icin 3'e\n" +
-                "Urunu Rafa koymak icin 4'e\n" +
-                "Urun Cikisi icin 5'e\n"+
-                "Butun islemleri bitirmek icin 0'a basiniz");
+        System.out.println(
+        "Yapmak istediginiz islemi seciniz :\n"
+                + "Urun   tanimlama  icin --> 1 \n"
+                + "Urun   listeme    icin --> 2 \n"
+                + "Urun   girisi     icin --> 3 \n"
+                + "Urunu  rafa koyak  icin --> 4 \n"
+                + "Urun   cikisi   icin --> 5 \n"
+                + "Cikis  icin --> 6");
         int tercih= scan.nextInt();
         switch (tercih){
             case 1:
@@ -98,16 +99,15 @@ public class Islemler {
             for (DepoYonetimi each : urunList
             ) {
                 if (urunlerMap.containsKey(girisId)){
-                    System.out.println("Urunu koymak istediginiz rafi seciniz ");
-                    each.setRaf(scan.nextInt());
-                    urunListele();
-                } else {
+                       System.out.println("Urunu koymak istediginiz rafi seciniz ");
+                       each.setRaf(scan.nextInt());
+                       urunListele();
+
+                   } else {
                     System.out.println("Urun bulunamadigi icin rafa kaldirilmadi");
                     urunuRafaKoy();
                 }
             }
-
-
             baslangic();
     }
 
@@ -157,23 +157,23 @@ public class Islemler {
 
        public static void uruntanimlama() {
 
-            System.out.print(" Urun tanimlamak icin ;\n urunun ismi :");
+            System.out.print("Urun tanimlamak icin ;\nUrunun ismi :");
             scan.nextLine();
             String urunAdi = scan.nextLine();
 
-            System.out.print("urunun ureticisi : ");
+            System.out.print("Urunun ureticisi : ");
             String uretici = scan.nextLine();
 
-            System.out.print("urunun birimi : ");
+            System.out.print("Urunun birimi : ");
             String birim = scan.nextLine();
 
-            System.out.print("urunun miktari : ");
+            System.out.print("Urunun miktari : ");
             int miktar = scan.nextInt();
 
 
             DepoYonetimi obj = new DepoYonetimi(id,urunAdi,uretici,miktar,birim,raf);
             urunList.add(obj);
-            urunlerMap.put(id,obj);
+            urunlerMap.put(id,urunList); // key olarak id 'yi unique deger olarak value olarak da urunList ekledik
             id++;
             System.out.println("\n");
             baslangic();
