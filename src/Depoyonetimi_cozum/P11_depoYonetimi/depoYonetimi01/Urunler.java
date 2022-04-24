@@ -1,21 +1,29 @@
-package halukHoca;
+package Depoyonetimi_cozum.P11_depoYonetimi.depoYonetimi01;
 
-public class DepoYonetimi {
-    private  int id;
-    private  String urunIsmi;
-    private  String uretici;
-    private  int miktar=0;
-    private  String birim;
-    private  int raf;
+public class Urunler {//pojo model class
 
+   private String urunIsmi;
+   private String uretici;
+   private int miktar;
+   private String birim;
+   private String raf;
 
-    public int getId() {
-        return id;
+    public Urunler() {
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public Urunler( String urunIsmi, String uretici, int miktar, String birim, String raf) {
+
+        this.urunIsmi = urunIsmi;
+        this.uretici = uretici;
+        this.miktar = miktar;
+        this.birim = birim;
+        this.raf = raf;
     }
+
+
+
+
+
 
     public String getUrunIsmi() {
         return urunIsmi;
@@ -49,38 +57,23 @@ public class DepoYonetimi {
         this.birim = birim;
     }
 
-    public int getRaf() {
+    public String getRaf() {
         return raf;
     }
 
-    public void setRaf(int raf) {
+    public void setRaf(String raf) {
         this.raf = raf;
     }
 
-    public DepoYonetimi(int id, String urunIsmi, String uretici, String birim, int raf) {
-        this.id=Islemler.id;
-        this.urunIsmi = urunIsmi;
-        this.uretici = uretici;
-        this.birim = birim;
-        this.raf=Islemler.raf;
-
-
-    }
     @Override
     public String toString() {
-        return "DepoYonetimi{" +
-                "id=" + id +
+        return "Urunleriniz" +
+
                 ", urunIsmi='" + urunIsmi + '\'' +
                 ", uretici='" + uretici + '\'' +
                 ", miktar=" + miktar +
                 ", birim='" + birim + '\'' +
-                ", raf=" + raf +
-                '}';
+                ", raf='" + raf + '\'' +"\n"
+                ;
     }
-
-    public DepoYonetimi() {
-
-    }
-
-
 }

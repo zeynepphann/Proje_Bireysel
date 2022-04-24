@@ -10,8 +10,9 @@ public class Islemler {
     public static int id=100;
 
 
+
     public static List<DepoYonetimi> urunlerListesi = new ArrayList<>();
-    public static int raf;
+    public static int raf=0;
 
     public static void baslangic(){
         System.out.println("Yapmak istediginiz islemi seciniz :\n"+
@@ -70,12 +71,12 @@ public class Islemler {
         int cikisId= scan.nextInt();
         for (DepoYonetimi each:urunlerListesi
              ) {
-            if (each.id==cikisId){
+            if (each.getId()==cikisId){
                 System.out.println("Cikilacak urun miktarini giriniz : ");
                 int kacMiktar=scan.nextInt();
-                if (kacMiktar>0 && kacMiktar<each.miktar){
-                    each.miktar-=kacMiktar;
-                }else System.out.println(" Yeterli urun olmadigi icin cikis yapilamadi. ");
+                if (kacMiktar>0 && kacMiktar<each.getMiktar()){
+                   urunlerListesi.get(kacMiktar).setMiktar(kacMiktar-urunlerListesi.get(kacMiktar).getMiktar());
+                }else  System.out.println(" Yeterli urun olmadigi icin cikis yapilamadi. ");
                 cikisDogruMu=true;
                 break;
             }
@@ -86,22 +87,21 @@ public class Islemler {
 
 
             boolean rafaKoyduMu=false;
-           urunListele();
+            urunListele();
             System.out.println("Lutfen urun listesinden gecerli bir id giriniz: ");
             int girisId= scan.nextInt();
 
             for (DepoYonetimi each : urunlerListesi
             ) {
-                if (each.id==girisId){
+                if (each.getId()==girisId){
                     System.out.println("Urunu koymak istediginiz rafi seciniz ");
-                    each.raf= scan.nextInt();
+                    urunlerListesi.get(raf).setRaf(scan.nextInt());
                     rafaKoyduMu=true;
                     urunListele();
                     break;
-                  //}else if (each.id!=girisId){
-                  //  System.out.println("Urun bulunamadigi icin rafa kaldirilmadi.");
                 }
-                if (each.id!=girisId){
+
+                if (rafaKoyduMu){
                     System.out.println("Urun bulunamadigi icin rafa kaldirilmadi");
                 }
             }
@@ -120,11 +120,11 @@ public class Islemler {
         int girisId=scan.nextInt();
         for (DepoYonetimi each : urunlerListesi
              ) {
-            if (each.id==girisId){
+            if (each.getId()==girisId){
                 System.out.println("Girilecek urun miktarini giriniz : ");
                 int kacMiktar=scan.nextInt();
                 if (kacMiktar>0){
-                    each.miktar+=kacMiktar;
+                   urunlerListesi.get(kacMiktar).setMiktar(kacMiktar+urunlerListesi.get(kacMiktar).);
 
                 }else System.out.println("Gecerli bir miktar giriniz. ");
                sonuc=true;
@@ -139,8 +139,8 @@ public class Islemler {
         System.out.println("********************************************************************");
         for (int i = 0; i < urunlerListesi.size() ; i++) {
             System.out.printf("%-3d    %-9s     %-9s      %3d           %-7s   Raf%2d  \n",
-                    urunlerListesi.get(i).id,urunlerListesi.get(i).urunIsmi,urunlerListesi.get(i).uretici,
-                    urunlerListesi.get(i).miktar,urunlerListesi.get(i).birim,urunlerListesi.get(i).raf);
+                    urunlerListesi.get(i).getId(),urunlerListesi.get(i).getUrunIsmi(),urunlerListesi.get(i).getUretici(),
+                    urunlerListesi.get(i).getMiktar(),urunlerListesi.get(i).getBirim(),urunlerListesi.get(i).getRaf());
         }
         scan.nextLine();
         System.out.println("********************************************************************");
@@ -164,18 +164,13 @@ public class Islemler {
 
             DepoYonetimi obj = new DepoYonetimi(id,urunAdi,uretici,birim,raf);
             urunlerListesi.add(obj);
-             id++;
-            System.out.println("Urun girisini bitirmek istiyorsaniz 0'a basiniz devam etmek istiyorsaniz 1'e basiniz ");
-            int devam=scan.nextInt();
-            if (devam==1){
-              uruntanimlama();
-              break;
-            }else if  (devam==0){
-                System.out.println("Cikis yaptiniz.");
-                break;
-            }
+            id++;
+            System.out.println("\n");
+            baslangic();
+
 
         } while (flag == true);
+
 
         return urunlerListesi;
     }
