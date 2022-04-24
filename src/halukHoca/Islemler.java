@@ -17,11 +17,11 @@ public class Islemler {
 
     public static void baslangic(){
         System.out.println("Yapmak istediginiz islemi seciniz :\n"+
-                "Urun Tanimlama icin 1\n" +
-                "Urun Listeme icin 2\n" +
-                "Urun Girisi icin 3\n" +
-                "Urunu Rafa koymak icin 4\n" +
-                "Urun Cikisi icin 5\n"+
+                "Urun Tanimlama icin 1'e\n" +
+                "Urun Listeme icin 2'ye\n" +
+                "Urun Girisi icin 3'e\n" +
+                "Urunu Rafa koymak icin 4'e\n" +
+                "Urun Cikisi icin 5'e\n"+
                 "Butun islemleri bitirmek icin 0'a basiniz");
         int tercih= scan.nextInt();
         switch (tercih){
@@ -73,7 +73,7 @@ public class Islemler {
         int cikisId= scan.nextInt();
         for (DepoYonetimi each: depo
              ) {
-            if (each.getId()==cikisId){
+            if (urunlerMap.containsKey(cikisId)){
                 System.out.println("Cikilacak urun miktarini giriniz : ");
                 int kacMiktar=scan.nextInt();
                 if (kacMiktar>=0 && kacMiktar<=each.getMiktar()){
@@ -98,7 +98,7 @@ public class Islemler {
 
             for (DepoYonetimi each : depo
             ) {
-                if (each.getId()==girisId){
+                if (urunlerMap.containsKey(girisId)){
                     System.out.println("Urunu koymak istediginiz rafi seciniz ");
                     each.setRaf(scan.nextInt());
                     urunListele();
@@ -122,7 +122,7 @@ public class Islemler {
         int girisId=scan.nextInt();
         for (DepoYonetimi each : depo
              ) {
-            if (each.getId()==girisId){
+            if (urunlerMap.containsKey(girisId)){
                 System.out.println("Girilecek urun miktarini giriniz : ");
                 int kacMiktar=scan.nextInt();
                 if (kacMiktar>0){
@@ -174,7 +174,6 @@ public class Islemler {
             depo.add(obj);
             urunlerMap.put(id,obj);
             id++;
-
             System.out.println("\n");
             baslangic();
 

@@ -69,17 +69,6 @@ public class DepoYonetimi {
 
 
     }
-    @Override
-    public String toString() {
-        return "DepoYonetimi{" +
-                "id=" + id +
-                ", urunIsmi='" + urunIsmi + '\'' +
-                ", uretici='" + uretici + '\'' +
-                ", miktar=" + miktar +
-                ", birim='" + birim + '\'' +
-                ", raf=" + raf +
-                '}';
-    }
 
     public DepoYonetimi() {
 
