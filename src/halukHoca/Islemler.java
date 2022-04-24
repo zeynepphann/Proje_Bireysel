@@ -9,10 +9,9 @@ public class Islemler {
 
     static Scanner scan = new Scanner(System.in);
     public static int id=1000;
-
-    static List<Integer> idDepo=new ArrayList<>();
-    static List<DepoYonetimi>  depo = new ArrayList<>();
     static HashMap <Integer,DepoYonetimi> urunlerMap = new HashMap<>();
+    static List<DepoYonetimi> urunList=new ArrayList<>();
+
     public static int raf=0;
 
     public static void baslangic(){
@@ -71,7 +70,7 @@ public class Islemler {
         urunListele();
         System.out.println("Cikis yapmak istediginiz urunun id'sini giriniz :");
         int cikisId= scan.nextInt();
-        for (DepoYonetimi each: depo
+        for (DepoYonetimi each: urunList
              ) {
             if (urunlerMap.containsKey(cikisId)){
                 System.out.println("Cikilacak urun miktarini giriniz : ");
@@ -96,7 +95,7 @@ public class Islemler {
             System.out.println("Lutfen urun listesinden gecerli bir id giriniz: ");
             int girisId= scan.nextInt();
 
-            for (DepoYonetimi each : depo
+            for (DepoYonetimi each : urunList
             ) {
                 if (urunlerMap.containsKey(girisId)){
                     System.out.println("Urunu koymak istediginiz rafi seciniz ");
@@ -120,7 +119,7 @@ public class Islemler {
 
         System.out.println("Giris yapmak istediginiz urunun id'sini giriniz :");
         int girisId=scan.nextInt();
-        for (DepoYonetimi each : depo
+        for (DepoYonetimi each : urunList
              ) {
             if (urunlerMap.containsKey(girisId)){
                 System.out.println("Girilecek urun miktarini giriniz : ");
@@ -128,7 +127,9 @@ public class Islemler {
                 if (kacMiktar>0){
                   each.setMiktar(each.getMiktar()+kacMiktar);
                     System.out.println("Suanki urun miktari : "+ each.getMiktar());
+                    baslangic();
                 }else System.out.println("Gecerli bir miktar giriniz. ");
+
 
 
             }else{
@@ -144,10 +145,10 @@ public class Islemler {
       public static  void urunListele() {
         System.out.println("id     Urun İsmi     Uretici      Miktari        Birimi     Raf");
         System.out.println("********************************************************************");
-        for (int i = 0; i < depo.size() ; i++) {
+        for (int i = 0; i < urunList.size() ; i++) {
             System.out.printf("%-3d    %-9s     %-9s      %3d           %-7s   Raf%2d  \n",
-                    depo.get(i).getId(),depo.get(i).getUrunIsmi(),depo.get(i).getUretici(),
-                    depo.get(i).getMiktar(),depo.get(i).getBirim(),depo.get(i).getRaf());
+                    urunList.get(i).getId(),urunList.get(i).getUrunIsmi(),urunList.get(i).getUretici(),
+                    urunList.get(i).getMiktar(),urunList.get(i).getBirim(),urunList.get(i).getRaf());
         }
         scan.nextLine();
         System.out.println("********************************************************************");
@@ -171,7 +172,7 @@ public class Islemler {
 
 
             DepoYonetimi obj = new DepoYonetimi(id,urunAdi,uretici,miktar,birim,raf);
-            depo.add(obj);
+            urunList.add(obj);
             urunlerMap.put(id,obj);
             id++;
             System.out.println("\n");
