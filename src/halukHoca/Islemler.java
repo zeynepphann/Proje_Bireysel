@@ -1,17 +1,18 @@
 package halukHoca;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
 
 public class Islemler {
 
     static Scanner scan = new Scanner(System.in);
-    public static int id=100;
+    public static int id=1000;
 
-
-
-    public static List<DepoYonetimi> urunlerListesi = new ArrayList<>();
+    static List<Integer> idDepo=new ArrayList<>();
+    static List<DepoYonetimi>  depo = new ArrayList<>();
+    static HashMap <Integer,DepoYonetimi> urunlerMap = new HashMap<>();
     public static int raf=0;
 
     public static void baslangic(){
@@ -70,7 +71,7 @@ public class Islemler {
         urunListele();
         System.out.println("Cikis yapmak istediginiz urunun id'sini giriniz :");
         int cikisId= scan.nextInt();
-        for (DepoYonetimi each:urunlerListesi
+        for (DepoYonetimi each: depo
              ) {
             if (each.getId()==cikisId){
                 System.out.println("Cikilacak urun miktarini giriniz : ");
@@ -95,7 +96,7 @@ public class Islemler {
             System.out.println("Lutfen urun listesinden gecerli bir id giriniz: ");
             int girisId= scan.nextInt();
 
-            for (DepoYonetimi each : urunlerListesi
+            for (DepoYonetimi each : depo
             ) {
                 if (each.getId()==girisId){
                     System.out.println("Urunu koymak istediginiz rafi seciniz ");
@@ -119,7 +120,7 @@ public class Islemler {
 
         System.out.println("Giris yapmak istediginiz urunun id'sini giriniz :");
         int girisId=scan.nextInt();
-        for (DepoYonetimi each : urunlerListesi
+        for (DepoYonetimi each : depo
              ) {
             if (each.getId()==girisId){
                 System.out.println("Girilecek urun miktarini giriniz : ");
@@ -143,20 +144,18 @@ public class Islemler {
       public static  void urunListele() {
         System.out.println("id     Urun İsmi     Uretici      Miktari        Birimi     Raf");
         System.out.println("********************************************************************");
-        for (int i = 0; i < urunlerListesi.size() ; i++) {
+        for (int i = 0; i < depo.size() ; i++) {
             System.out.printf("%-3d    %-9s     %-9s      %3d           %-7s   Raf%2d  \n",
-                    urunlerListesi.get(i).getId(),urunlerListesi.get(i).getUrunIsmi(),urunlerListesi.get(i).getUretici(),
-                    urunlerListesi.get(i).getMiktar(),urunlerListesi.get(i).getBirim(),urunlerListesi.get(i).getRaf());
+                    depo.get(i).getId(),depo.get(i).getUrunIsmi(),depo.get(i).getUretici(),
+                    depo.get(i).getMiktar(),depo.get(i).getBirim(),depo.get(i).getRaf());
         }
         scan.nextLine();
         System.out.println("********************************************************************");
     }
 
 
-    public static List<DepoYonetimi>  uruntanimlama() {
-        boolean flag = true;
+       public static void uruntanimlama() {
 
-        //do {
             System.out.print(" Urun tanimlamak icin ;\n urunun ismi :");
             scan.nextLine();
             String urunAdi = scan.nextLine();
@@ -167,18 +166,23 @@ public class Islemler {
             System.out.print("urunun birimi : ");
             String birim = scan.nextLine();
 
+            System.out.print("urunun miktari : ");
+            int miktar = scan.nextInt();
 
-            DepoYonetimi obj = new DepoYonetimi(id,urunAdi,uretici,birim,raf);
-            urunlerListesi.add(obj);
+
+            DepoYonetimi obj = new DepoYonetimi(id,urunAdi,uretici,miktar,birim,raf);
+            depo.add(obj);
+            urunlerMap.put(id,obj);
             id++;
+
             System.out.println("\n");
             baslangic();
 
 
-       // } while (flag == true);
 
 
-        return urunlerListesi;
+
+
     }
 
 }

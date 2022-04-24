@@ -57,10 +57,13 @@ public class DepoYonetimi {
         this.raf = raf;
     }
 
-    public DepoYonetimi(int id, String urunIsmi, String uretici, String birim, int raf) {
+
+
+    public DepoYonetimi(int id, String urunIsmi, String uretici,int miktar, String birim, int raf) {
         this.id=Islemler.id;
         this.urunIsmi = urunIsmi;
         this.uretici = uretici;
+        this.miktar=miktar;
         this.birim = birim;
         this.raf=Islemler.raf;
 
