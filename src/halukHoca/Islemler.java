@@ -61,11 +61,12 @@ public class Islemler {
     }
 
     private static void cikis() {
+
         System.out.println("Cikis yaptiniz");
     }
 
     private static void urunCikisi() {
-        boolean cikisDogruMu=false;
+
         urunListele();
         System.out.println("Cikis yapmak istediginiz urunun id'sini giriniz :");
         int cikisId= scan.nextInt();
@@ -74,11 +75,14 @@ public class Islemler {
             if (each.getId()==cikisId){
                 System.out.println("Cikilacak urun miktarini giriniz : ");
                 int kacMiktar=scan.nextInt();
-                if (kacMiktar>0 && kacMiktar<each.getMiktar()){
-                   urunlerListesi.get(kacMiktar).setMiktar(kacMiktar-urunlerListesi.get(kacMiktar).getMiktar());
+                if (kacMiktar>=0 && kacMiktar<=each.getMiktar()){
+                each.setMiktar(each.getMiktar()-kacMiktar);
+                    System.out.println("Suan ki toplam urun miktari : "+ each.getMiktar());
                 }else  System.out.println(" Yeterli urun olmadigi icin cikis yapilamadi. ");
-                cikisDogruMu=true;
-                break;
+
+            }else {
+                System.out.println("Gecerli bir id giriniz :");
+                urunCikisi();
             }
         }
     }
@@ -95,14 +99,11 @@ public class Islemler {
             ) {
                 if (each.getId()==girisId){
                     System.out.println("Urunu koymak istediginiz rafi seciniz ");
-                    urunlerListesi.get(raf).setRaf(scan.nextInt());
-                    rafaKoyduMu=true;
+                    each.setRaf(scan.nextInt());
                     urunListele();
-                    break;
-                }
-
-                if (rafaKoyduMu){
+                } else {
                     System.out.println("Urun bulunamadigi icin rafa kaldirilmadi");
+                    urunuRafaKoy();
                 }
             }
 
@@ -115,7 +116,7 @@ public class Islemler {
 
     public static void urunGirisi() {
 
-        boolean sonuc=false;
+
         System.out.println("Giris yapmak istediginiz urunun id'sini giriniz :");
         int girisId=scan.nextInt();
         for (DepoYonetimi each : urunlerListesi
@@ -124,12 +125,17 @@ public class Islemler {
                 System.out.println("Girilecek urun miktarini giriniz : ");
                 int kacMiktar=scan.nextInt();
                 if (kacMiktar>0){
-                   urunlerListesi.get(kacMiktar).setMiktar(kacMiktar+urunlerListesi.get(kacMiktar).);
-
+                  each.setMiktar(each.getMiktar()+kacMiktar);
+                    System.out.println("Suanki urun miktari : "+ each.getMiktar());
                 }else System.out.println("Gecerli bir miktar giriniz. ");
-               sonuc=true;
-               break;
+
+
+            }else{
+                System.out.println("Gecerli bir id girin : ");
+                urunGirisi();
+
             }
+
         }
 
     }
@@ -150,7 +156,7 @@ public class Islemler {
     public static List<DepoYonetimi>  uruntanimlama() {
         boolean flag = true;
 
-        do {
+        //do {
             System.out.print(" Urun tanimlamak icin ;\n urunun ismi :");
             scan.nextLine();
             String urunAdi = scan.nextLine();
@@ -169,7 +175,7 @@ public class Islemler {
             baslangic();
 
 
-        } while (flag == true);
+       // } while (flag == true);
 
 
         return urunlerListesi;
