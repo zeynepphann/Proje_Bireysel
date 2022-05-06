@@ -6,8 +6,15 @@ public class Doktor {
     String isim;
     String soyIsim;
     String unvan;
+    String aciliyet;
 
-    public Doktor(String hastaDurum , String unvan,String isim, String soyIsi) {
+    public Doktor(String hastaDurum, String isim, String soyIsim, String unvan, String aciliyet) {
+        this.hastaDurum = hastaDurum;
+        this.isim = isim;
+        this.soyIsim = soyIsim;
+        this.unvan = unvan;
+        this.aciliyet=aciliyet;
+
     }
 
     public String getIsim() {
@@ -32,5 +39,16 @@ public class Doktor {
 
     public void setUnvan(String unvan) {
         this.unvan = unvan;
+    }
+
+    @Override
+    public String toString() {
+        return
+                "\nBelirti=" + hastaDurum +
+                "  Doktor ismi=" + isim  +
+                "  Doktor Soy Isim=" + soyIsim +
+                "  Doktorun Bulundugu Bolum=" + unvan +
+                "  Aciliyet Durumu=" + aciliyet
+                ;
     }
 }
