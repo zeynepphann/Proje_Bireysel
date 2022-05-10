@@ -58,10 +58,23 @@ public class HastaneMethod {
         String sikayet = scan.nextLine();
 
         if (doktorListesiMap.containsKey(sikayet)) {
+            System.out.println("Doktora yonlendiriliyorsunuz ");
             System.out.println(hastaListesiMap.get(hastaId));
             System.out.println(doktorListesiMap.get(sikayet));
+
+            System.out.println("Cikis icin 0'a basiniz");
+            int cikis=scan.nextInt();
+            if (cikis==0){
+                System.out.println("Cikis yapildi");
+            }
+
+        }else if (!doktorListesiMap.containsKey(sikayet)){
+            System.out.println(" Hatali giris yaptiniz lutfen tekrar sikayetinizi giriniz ");
         }
-        giris();
+
+
+
+
 
     }
 
