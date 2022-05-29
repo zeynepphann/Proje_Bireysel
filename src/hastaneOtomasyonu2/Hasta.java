@@ -16,6 +16,6 @@ public class Hasta {
      public String toString() {
           return "Hasta Bilgileri :" +
                   "Isim=" + isim   +
-                  "  Soy Isim=" + soyIsim + "\n";
+                  "  Soy Isim=" + soyIsim ;
      }
 }
