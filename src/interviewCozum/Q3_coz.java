@@ -2,7 +2,7 @@ package interviewCozum;
 
 import java.util.Scanner;
 
-public class Q3 {
+public class Q3_coz {
     public static void main(String[] args) {
 
         // FIBONACCI

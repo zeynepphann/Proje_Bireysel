@@ -2,7 +2,7 @@ package interviewCozum;
 
 import java.util.Scanner;
 
-public class Q4 {
+public class Q4_coz {
     //Enter a positive integer to check if it is prime or not
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
